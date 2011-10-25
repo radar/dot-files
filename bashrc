@@ -89,6 +89,7 @@ alias be="bundle exec"
 
 alias 1.8.7="rvm use 1.8.7"
 alias 1.9.2="rvm use 1.9.2"
+alias 1.9.3="rvm use 1.9.3-preview1"
 
 alias rms='rake merge:staging'
 alias start_mongo="screen -dmS mongo rake mongo:start"
