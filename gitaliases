@@ -2,6 +2,8 @@
 
 alias gst='git status'
 alias gl='git pull --rebase'
+alias glo='gl origin'
+alias glom='glo master'
 alias rails_im_back='gl && sudo rake gems:install && sudo rake gems:install RAILS_ENV=cucumber && migrate && rake spec cucumber:ok'
 alias gp='git push'
 alias gpa='git push-all' # see [alias] in ~/.gitconfig
