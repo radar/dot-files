@@ -1397,30 +1397,3 @@ complete -o default -o nospace -F _git_svn git-svn
 complete -o default -o nospace -F _git_log git-show-branch
 complete -o default -o nospace -F _git_tag git-tag
 complete -o default -o nospace -F _git_log git-whatchanged
-
-# The following are necessary only for Cygwin, and only are needed
-# when the user has tab-completed the executable name and consequently
-# included the '.exe' suffix.
-#
-if [ Cygwin = "$(uname -o 2>/dev/null)" ]; then
-complete -o default -o nospace -F _git_add git-add.exe
-complete -o default -o nospace -F _git_apply git-apply.exe
-complete -o default -o nospace -F _git git.exe
-complete -o default -o nospace -F _git_branch git-branch.exe
-complete -o default -o nospace -F _git_bundle git-bundle.exe
-complete -o default -o nospace -F _git_cherry git-cherry.exe
-complete -o default -o nospace -F _git_describe git-describe.exe
-complete -o default -o nospace -F _git_diff git-diff.exe
-complete -o default -o nospace -F _git_format_patch git-format-patch.exe
-complete -o default -o nospace -F _git_log git-log.exe
-complete -o default -o nospace -F _git_ls_tree git-ls-tree.exe
-complete -o default -o nospace -F _git_merge_base git-merge-base.exe
-complete -o default -o nospace -F _git_name_rev git-name-rev.exe
-complete -o default -o nospace -F _git_push git-push.exe
-complete -o default -o nospace -F _git_config git-config
-complete -o default -o nospace -F _git_shortlog git-shortlog.exe
-complete -o default -o nospace -F _git_show git-show.exe
-complete -o default -o nospace -F _git_log git-show-branch.exe
-complete -o default -o nospace -F _git_tag git-tag.exe
-complete -o default -o nospace -F _git_log git-whatchanged.exe
-fi
