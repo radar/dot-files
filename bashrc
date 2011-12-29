@@ -30,17 +30,14 @@ export PS1='\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")♐ '
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-export EDITOR='mate -w -l1'
+export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 # sets title of window to be user@host
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
 
 # fucking useful shit
-alias 2.3="mate ~/Sites/rails-2.3"
-alias mate='/usr/bin/mate'
 alias mvim='open -a /Applications/MacVim.app' 
-alias gpbm='git push banana master'
 alias ls='ls -G'
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
@@ -62,6 +59,7 @@ alias cdm='cap deploy deploy:migrate'
 alias model='rails generate model'
 alias controller='rails generate controller'
 alias migration='rails generate migration'
+alias r='bundle exec rake'
 alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
 alias rollback='rake db:rollback'
 alias dtp='rake db:test:prepare'
@@ -72,7 +70,6 @@ alias sr='rake spec'
 alias rt='rake test'
 alias rf='rake features'
 alias restart='touch tmp/restart.txt'
-alias mong='mongrel_rails start'
 alias startpg='sudo su postgres'
 alias 1.9="rvm use 1.9"
 alias 1.8="rvm use default"
@@ -81,6 +78,7 @@ alias s="rake spec"
 alias mrt="1.8 && rake test && 1.9 && rake test"
 alias mrs="1.8 && rake spec && 1.9 && rake spec"
 alias format-patch="git format-patch HEAD^1..HEAD"
+alias raisl='rails'
 
 alias ber="bundle exec rspec"
 alias bes="bundle exec spec"
@@ -89,7 +87,7 @@ alias be="bundle exec"
 
 alias 1.8.7="rvm use 1.8.7"
 alias 1.9.2="rvm use 1.9.2"
-alias 1.9.3="rvm use 1.9.3-preview1"
+alias 1.9.3="rvm use 1.9.3"
 
 alias rms='rake merge:staging'
 alias start_mongo="screen -dmS mongo rake mongo:start"
