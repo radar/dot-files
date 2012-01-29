@@ -36,48 +36,29 @@ export VISUAL=$EDITOR
 # sets title of window to be user@host
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
 
-# fucking useful shit
 alias mvim='open -a /Applications/MacVim.app' 
 alias ls='ls -G'
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
-alias g='grep -i'  #case insensitive grep
-alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders$
-alias top='top -o cpu'
 alias systail='tail -f /var/log/system.log'
-# useful command to find what you should be aliasing:
-alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
 # rails stuff
 alias l='lookup'
 alias log='tail -f -0 ./log/*.log &'
 alias stoplog='killall tail'
-alias ss='ruby ./script/server'
-alias sc='ruby ./script/console'
-alias cdm='cap deploy deploy:migrate'
 alias model='rails generate model'
 alias controller='rails generate controller'
 alias migration='rails generate migration'
 alias r='bundle exec rake'
 alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
 alias rollback='rake db:rollback'
-alias dtp='rake db:test:prepare'
 alias redo="rake db:migrate && rake db:rollback"
-alias logga='ssh root@209.20.74.23'
 alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
-alias sr='rake spec'
-alias rt='rake test'
-alias rf='rake features'
 alias restart='touch tmp/restart.txt'
 alias startpg='sudo su postgres'
-alias 1.9="rvm use 1.9"
-alias 1.8="rvm use default"
 alias t="rake test"
 alias s="rake spec"
-alias mrt="1.8 && rake test && 1.9 && rake test"
-alias mrs="1.8 && rake spec && 1.9 && rake spec"
-alias format-patch="git format-patch HEAD^1..HEAD"
 alias raisl='rails'
 
 alias ber="bundle exec rspec"
@@ -88,74 +69,11 @@ alias be="bundle exec"
 alias 1.8.7="rvm use 1.8.7"
 alias 1.9.2="rvm use 1.9.2"
 alias 1.9.3="rvm use 1.9.3"
+alias falcon="rvm use 1.9.3-falcon"
 
-alias rms='rake merge:staging'
-alias start_mongo="screen -dmS mongo rake mongo:start"
-
-alias ambler="ssh getsalesonrails.com"
-alias dj="ssh docjockeyapp.com"
-
-alias pharmmd="cd ~/Sites/mocra/pharmmd"
 alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
 
-alias hidefile='/usr/bin/SetFile -a "V"'
-alias showfile='/usr/bin/SetFile -a "v"'
-alias brains='cd ~/Sites/railscamp/brains/'
-
-teleport() {
-  killall teleportd || true
-  screen -dm /Library/PreferencePanes/teleport.prefPane/Contents/Resources/teleportd.app/Contents/MacOS/teleportd
-  open ~/activate\ telefrag.app
-}
- 
-alias qwerty="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && teleport"
-alias colemak="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && ln -s QWERTY_Colemak.plist Keymap.plist && teleport"
-alias colemap="colemak"
-alias dvorak="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && ln -s QWERTY_Dvorak.plist Keymap.plist && teleport"
-
-soffice() {
-  cd /Applications/OpenOffice.org.app/Contents/program
-  killall soffice || true
-  screen -dm ./soffice -accept="socket,host=localhost,port=2002;urp" -norestore -headless -invisible -nofirststartwizard
-  cd -
-}
-
-# Gem Doc
-export GEMDIR=`gem env gemdir`
-gemdoc() {
-  open $GEMDIR/doc/`$(which ls) $GEMDIR/doc | grep $1 | sort | tail -1`/rdoc/index.html
-}
-_gemdocomplete() {
-  COMPREPLY=($(compgen -W '$(`which ls` $GEMDIR/doc)' -- ${COMP_WORDS[COMP_CWORD]}))
-  return 0
-}
-# Side projects
-sp() {
-  if [ -d ~/Sites/side_projects/$1* ]; then 
-    cd ~/Sites/side_projects/$1*; 
-  else
-    # unset lookup_name
-    # lookup_name=echo $(fold -w1 <(echo $1)) | tr ' ' '*'
-    # echo $lookup_name
-    # if [ -d ~/Sites/side_projects/$lookup_name ]; then
-    #   cd ~/Sites/side_projects/*$lookup_name*;
-    # else
-      echo "$1 is not a project."
-    # fi
-  fi
-}
-
-# Mocra projects
-m() {
-  if [ -d ~/Sites/Mocra/$1* ]; then 
-    cd ~/Sites/Mocra/$1*; 
-  else
-    echo "$1 is not a project."
-  fi
-}
-complete -o default -o nospace -F _gemdocomplete gemdoc
 complete -C ~/.rake-completion.rb -o default rake
-
 
 # readline settings
 bind "set completion-ignore-case on" 
@@ -165,17 +83,6 @@ bind "set show-all-if-ambiguous On" # this allows you to automatically show comp
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
-if [ ! -f ~/.dirs ]; then
-	touch ~/.dirs
-fi
-
-alias show='cat ~/.dirs'
-save (){
-	command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
-}
-source ~/.dirs  # Initialization for the above 'save' facility: source the .dirs file
-shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
 
 # history (bigger size, no duplicates, always append):
 export HISTCONTROL=erasedups
