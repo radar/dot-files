@@ -71,6 +71,10 @@ alias 1.9.2="rvm use 1.9.2"
 alias 1.9.3="rvm use 1.9.3"
 alias falcon="rvm use 1.9.3-falcon"
 
+alias def="ack 'def $1'"
+alias class="ack 'class $1'"
+alias module="ack 'module $1'"
+
 alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
 
 complete -C ~/.rake-completion.rb -o default rake
