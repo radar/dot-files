@@ -34,6 +34,21 @@ function gpar() {
   done
 }
 
+function branch_name() {
+  branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+  branch_name=${branch_name##refs/heads/}
+  echo $branch_name
+}
+
+function push() {
+  git push origin `branch_name`
+}
+
+function pull() {
+  git pull --rebase origin `branch_name`
+}
+
+
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
 export PATH=/usr/local/git/bin:$PATH
