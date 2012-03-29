@@ -48,6 +48,10 @@ function pull() {
   git pull --rebase origin `branch_name`
 }
 
+function fix() {
+  git rebase -i HEAD~$1
+}
+
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
