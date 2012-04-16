@@ -3,7 +3,6 @@
 alias gst='git status'
 alias gl='git pull --rebase'
 alias glo='gl origin'
-alias glom='glo master'
 alias gp='git push'
 alias gpom='git push origin master'
 alias gpa='git push-all' # see [alias] in ~/.gitconfig
