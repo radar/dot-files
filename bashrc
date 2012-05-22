@@ -1,7 +1,4 @@
 export PATH="/usr/local/bin:$PATH"
-export PATH="/Library/PostgreSQL8/bin/:$PATH"
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="/usr/local/pgsql/bin:$PATH"
 export PATH=$PATH:"/usr/local/mongodb/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export IRBRC="$HOME/.irbrc"
