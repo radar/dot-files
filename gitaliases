@@ -1,37 +1,21 @@
 # Dr Nic Compatibility Mode
 
-alias gst='git status'
 alias gl='git pull --rebase'
 alias glo='gl origin'
-alias gp='git push'
-alias gpom='git push origin master'
-alias gpa='git push-all' # see [alias] in ~/.gitconfig
 alias gap='git add -p .'
 alias gcp='git checkout -p .'
 alias gd='git diff | mate'
-alias ga='git add'
-alias gcl='git config --list'
 alias gc='git commit -v'
-alias gcm='git checkout master'
-alias gb='git branch'
-alias gbc='git branch --color'
-alias gba='git branch -a'
 alias gco='git checkout'
-alias gk='gitk --all &'
+alias gco-='git checkout -'
 alias grh='git reset HEAD'
 alias grc='git rebase --continue'
 alias grs='git rebase --skip'
-alias sha='git rev-parse HEAD | pbcopy'
+alias sha='git rev-parse HEAD | sed ":a;N;$!ba;s/\n//g" | pbcopy'
+alias cherry='git cherry-pick $1'
 
 alias good='git bisect good'
 alias bad='git bisect bad'
-
-function gpar() {
-  for remote in `git remote show`
-  do
-    `git push $remote --all -v`
-  done
-}
 
 function branch_name() {
   branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
@@ -51,6 +35,9 @@ function fix() {
   git rebase -i HEAD~$1
 }
 
+function pt() {
+  `git push origin ${*:1}`
+}
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
