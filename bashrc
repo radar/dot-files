@@ -34,6 +34,7 @@ export VISUAL=$EDITOR
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
 
 alias mvim='open -a /Applications/MacVim.app' 
+alias vim='mvim $1'
 alias ls='ls -G'
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
