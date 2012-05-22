@@ -42,7 +42,6 @@ alias ...='.. ..'
 alias systail='tail -f /var/log/system.log'
 
 # rails stuff
-alias l='lookup'
 alias log='tail -f -0 ./log/*.log &'
 alias stoplog='killall tail'
 alias model='rails generate model'
