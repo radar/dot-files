@@ -5,11 +5,6 @@
   summary = true
 	tool = opendiff
 [alias]
-  co = checkout
-  put = push origin HEAD
-  push-all = "!for i in $(git config --list | grep -E ^remote\\..+\\.url | sed -E 's/^remote\\.(.*)\\.url=.*/\\1/'); do git push $i master; done"
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  edit = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
 	sp = stash pop
 [apply]
   whitespace = nowarn
@@ -22,8 +17,10 @@
 	user = radar
 	token = ba7bf2d7f0edc07373873dda887b18ae
 [core]
-  editor = mate -w
+  editor = mvim
   excludesfile = ~/.gitignore
 	whitespace = fix
 [help]
 	autocorrect = 1
+[push]
+  default = current
