@@ -147,5 +147,3 @@ endif
 " Custom things, by Ryan
 set guifont=Inconsolata:h16
 color jellybeans
-
-call pathogen#infect()
