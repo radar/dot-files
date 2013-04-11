@@ -22,7 +22,7 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
-export PS1='\[\033[G\]\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")♐ '
+export PS1='\[\033[G\]\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")★'  
 
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
