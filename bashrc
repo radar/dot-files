@@ -54,17 +54,23 @@ alias redo="r db:migrate && r db:rollback"
 alias restart='touch tmp/restart.txt'
 alias raisl='rails'
 
+alias t='(bundle check || bundle update) && bundle exec rake test_app && bundle exec rspec spec'
 alias ber="bundle exec rspec"
 alias bes="bundle exec spec"
 alias bec="bundle exec cucumber"
 alias be="bundle exec"
+alias berrim='bundle exec rake railties:install:migrations; be rake db:migrate'
 
-alias 1.8.7="rvm use 1.8.7"
-alias 1.9.2="rvm use 1.9.2"
-alias 1.9.3="rvm use 1.9.3"
+alias master="git checkout master"
+alias 1-3-stable="git checkout 1-3-stable"
+alias 1-2-stable="git checkout 1-2-stable"
+alias 1-1-stable="git checkout 1-1-stable"
+alias 1-0-stable="git checkout 1-0-stable"
+
+alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
 
 # readline settings
-bind "set completion-ignore-case on" 
+bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
