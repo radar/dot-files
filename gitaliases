@@ -1,13 +1,12 @@
 # Dr Nic Compatibility Mode
 
 alias gl='git pull --rebase'
-alias glo='gl origin'
+alias glo='git log $1 --oneline | tail'
 alias gap='git add -p .'
 alias gcp='git checkout -p .'
-alias gd='git diff | mate'
+alias gsp='git stash -p .'
 alias gc='git commit -v'
 alias gco='git checkout'
-alias gco-='git checkout -'
 alias grh='git reset HEAD'
 alias grc='git rebase --continue'
 alias grs='git rebase --skip'
@@ -27,8 +26,16 @@ function push() {
   git push origin `branch_name`
 }
 
+function spush() {
+  git push spree `branch_name`
+}
+
 function pull() {
   git pull --rebase origin `branch_name`
+}
+
+function spull() {
+  git pull --rebase spree `branch_name`
 }
 
 function fix() {
@@ -38,6 +45,11 @@ function fix() {
 function pt() {
   `git push origin ${*:1}`
 }
+
+function spt() {
+  `git push spree ${*:1}`
+}
+
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
