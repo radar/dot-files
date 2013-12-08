@@ -17,7 +17,7 @@
 	user = radar
 	token = ba7bf2d7f0edc07373873dda887b18ae
 [core]
-  editor = mvim
+  editor = subl
   excludesfile = ~/.gitignore
 	whitespace = fix
 [help]

@@ -1,8 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/ryan/Sites/side_projects/twist'
-let g:netrw_dirhist_2='/Users/ryan/Sites/gems/spree'
-let g:netrw_dirhist_3='/Users/ryan/Sites/side_projects/twist'
-let g:netrw_dirhist_4='/Users/ryan/Sites/gems/spree/core'
-let g:netrw_dirhist_5='/Users/ryan/Sites/gems/spree_auth_devise'
-let g:netrw_dirhist_6='/Users/ryan/Sites/gems/spree/core'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/ryanbigg/Projects/gems/spree_static_content'
+let g:netrw_dirhist_2='/Users/ryanbigg/Projects/gems/spree'

@@ -1,6 +1,7 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:"/usr/local/mongodb/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin":$PATH
 export IRBRC="$HOME/.irbrc"
 
 export COLOR_NC='\e[0m' # No Color
@@ -22,19 +23,17 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
-export PS1='\[\033[G\]\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")★'  
+export PS1='\[\033[G\]\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")⸘ '  
 
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-export EDITOR='vim'
-export GIT_EDITOR=$EDITOR
+export EDITOR='subl'
+export GIT_EDITOR='subl -w'
 export VISUAL=$EDITOR
 # sets title of window to be user@host
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
 
-alias mvim='open -a /Applications/MacVim.app' 
-alias vim='mvim $1'
 alias ls='ls -G'
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
@@ -54,7 +53,11 @@ alias redo="r db:migrate && r db:rollback"
 alias restart='touch tmp/restart.txt'
 alias raisl='rails'
 
-alias t='(bundle check || bundle update) && bundle exec rake test_app && bundle exec rspec spec'
+alias b='bundle'
+alias ta='bundle check || (echo "Trying to bundle locally..." && rm -f Gemfile.lock && bundle install --local) || (echo "Bundling using remote sources..." && bundle update)'
+alias t='ta && rm -rf spec/dummy && bundle exec rake test_app'
+alias s='ta && rails s'
+alias c='ta && rails s'
 alias ber="bundle exec rspec"
 alias bes="bundle exec spec"
 alias bec="bundle exec cucumber"
@@ -68,6 +71,7 @@ alias 1-1-stable="git checkout 1-1-stable"
 alias 1-0-stable="git checkout 1-0-stable"
 
 alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
+alias ss="bundle exec rake db:drop db:create db:migrate db:seed AUTO_ACCEPT=1 && rake spree_sample:load --trace"
 
 # readline settings
 bind "set completion-ignore-case on"

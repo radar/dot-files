@@ -10,6 +10,10 @@ alias gco='git checkout'
 alias grh='git reset HEAD'
 alias grc='git rebase --continue'
 alias grs='git rebase --skip'
+alias gra='git rebase --abort'
+alias gar='git am --resolved'
+alias gas='git am --skip'
+alias gaa='git am --abort'
 alias sha='git rev-parse HEAD | sed ":a;N;$!ba;s/\n//g" | pbcopy'
 alias cherry='git cherry-pick $1'
 
@@ -50,6 +54,18 @@ function spt() {
   `git push spree ${*:1}`
 }
 
+function sco() {
+  wd=`pwd`
+  for project in spree spree_gateway spree_auth_devise spree_social spree_paypal_express spree_i18n spree_fancy; do
+  echo "Checking out ${project}"
+  cd ~/Projects/gems/${project}
+  git checkout $1 -q
+  done
+  cd $wd
+}
+
+alias pap='pull && push'
+alias spap='spull && spush'
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
