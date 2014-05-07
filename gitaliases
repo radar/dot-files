@@ -64,8 +64,17 @@ function sco() {
   cd $wd
 }
 
+function mt() {
+  sha=`git rev-parse HEAD`
+  for branch in ${*:1}; do
+    git checkout $branch
+    git cherry-pick $sha
+  done
+}
+
 alias pap='pull && push'
 alias spap='spull && spush'
+alias m='hub am -3 $1'
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
