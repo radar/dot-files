@@ -1,8 +1,0 @@
-#!/bin/bash
-source ~/.gitaliases
-sco `git branch --contains $2 | cut -d \  -f 2`
-bundle check ||
-  (echo "Trying to bundle locally..." && rm -f Gemfile.lock && bundle install --local) ||
-  (echo "Bundling using remote sources..." && bundle update)
-
-rm -rf tmp/cache # To clear possibly cached preferences

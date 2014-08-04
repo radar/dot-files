@@ -56,7 +56,7 @@ function spt() {
 
 function sco() {
   wd=`pwd`
-  for project in spree spree_gateway spree_auth_devise spree_social spree_paypal_express spree_i18n spree_fancy; do
+  for project in spree spree_gateway spree_auth_devise spree_social spree_paypal_express spree_i18n spree_fancy spree-multi-domain; do
   echo "Checking out ${project}"
   cd ~/Projects/gems/${project}
   git checkout $1 -q
