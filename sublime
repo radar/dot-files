@@ -1,0 +1,15 @@
+{
+	"auto_complete": false,
+	"color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme",
+	"font_face": "Meslo LG M DZ",
+	"font_size": 14,
+	"ignored_packages":
+	[
+		"GoSublime"
+	],
+	"show_minimap": false,
+	"tab_size": 2,
+	"theme": "Flatland Dark.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
+
