@@ -3,7 +3,11 @@ export PATH=$PATH:"/usr/local/mongodb/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin":$PATH
+export PATH="~/Projects/go/bin":$PATH
 export IRBRC="$HOME/.irbrc"
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 export COLOR_NC='\e[0m' # No Color
 export COLOR_WHITE='\e[1;37m'
@@ -40,7 +44,7 @@ export GOPATH=$HOME/Projects/go
 alias ls='ls -G'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
-alias work='cd ~/Projects/lifx'
+alias work='cd ~/Projects/lifx/lifx-cloud'
 
 # rails stuff
 alias log='tail -f -0 ./log/*.log &'

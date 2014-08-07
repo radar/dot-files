@@ -1,6 +1,6 @@
 [user]
 	name = Ryan Bigg
-  email = radarlistener@fastmail.fm
+        email = radar@lifx.co
 [merge]
   summary = true
 	tool = opendiff
