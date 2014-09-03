@@ -1,6 +1,6 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:"/usr/local/mongodb/bin"
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin":$PATH
 export PATH="~/Projects/go/bin":$PATH
