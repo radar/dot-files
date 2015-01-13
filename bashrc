@@ -70,6 +70,8 @@ alias berrim='r railties:install:migrations; r db:migrate'
 alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
 alias ss="bundle exec rake db:drop db:create railties:install:migrations db:migrate db:seed AUTO_ACCEPT=1 && rake spree_sample:load --trace"
 
+alias teg="cd ~/Projects/teg"
+
 # readline settings
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
