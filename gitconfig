@@ -1,6 +1,6 @@
 [user]
 	name = Ryan Bigg
-        email = me@ryanbigg.com
+        email = git@ryanbigg.com
 [merge]
   summary = true
 	tool = opendiff
