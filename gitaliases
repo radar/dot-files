@@ -42,7 +42,7 @@ function spull() {
   git pull --rebase spree `branch_name`
 }
 
-function fix() {
+function rb() {
   git rebase -i HEAD~$1
 }
 
