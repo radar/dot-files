@@ -44,7 +44,6 @@ export GOPATH=$HOME/Projects/go
 alias ls='ls -G'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
-alias work='cd ~/Projects/lifx/lifx-cloud'
 
 # rails stuff
 alias log='tail -f -0 ./log/*.log &'
@@ -57,13 +56,19 @@ alias restart='touch tmp/restart.txt'
 alias raisl='rails'
 alias shipit='bundle exec cap production deploy'
 
+function nuke() {
+  ps -e | grep searchd | cut -d ' ' -f1 | xargs kill -9
+  ps -e | grep mailcatcher | cut -d ' ' -f1 | xargs kill -9
+  ps -e | grep unicorn | cut -d ' ' -f1 | xargs kill -9
+}
+
+
 alias b='bundle'
 alias ta='bundle check || (echo "Trying to bundle locally..." && rm -f Gemfile.lock && bundle install --local) || (echo "Bundling using remote sources..." && bundle update)'
 alias t='ta && rm -rf spec/dummy && bundle exec rake test_app'
 alias s='ta && rails s'
 alias c='ta && rails s'
 alias ber="bundle exec rspec"
-alias bec="bundle exec cucumber"
 alias be="bundle exec"
 alias berrim='r railties:install:migrations; r db:migrate'
 
