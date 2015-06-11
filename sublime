@@ -1,15 +1,30 @@
 {
 	"auto_complete": false,
-	"color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme",
-	"font_face": "Meslo LG M DZ",
-	"font_size": 14,
+	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		"deps",
+		".git",
+		".hg",
+		"CVS",
+		"log",
+		"tmp",
+		"vendor",
+		".jhw-cache",
+		"public/assets",
+		"node_modules"
+	],
+	"font_face": "Input Mono",
+	"font_size": 13,
 	"ignored_packages":
 	[
-		"GoSublime"
 	],
-	"show_minimap": false,
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
 	"tab_size": 2,
-	"theme": "Flatland Dark.sublime-theme",
+	"theme": "Numix Dark.sublime-theme",
 	"translate_tabs_to_spaces": true
 }
-
