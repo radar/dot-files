@@ -1,0 +1,21 @@
+alias ls='ls -G'
+alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
+alias ...='.. ..'
+
+# rails stuff
+alias log='tail -f -0 ./log/*.log &'
+alias r='bundle exec rake'
+alias migrate='r db:migrate'
+alias rollback='r db:rollback'
+alias redo="r db:migrate && r db:rollback"
+alias restart='touch tmp/restart.txt'
+alias raisl='rails'
+
+alias b='bundle'
+alias s='ta && rails s'
+alias c='ta && rails s'
+alias ber="bundle exec rspec"
+alias be="bundle exec"
+alias berrim='r railties:install:migrations; r db:migrate'
+
+alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
