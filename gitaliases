@@ -30,16 +30,8 @@ function push() {
   git push origin `branch_name`
 }
 
-function spush() {
-  git push spree `branch_name`
-}
-
 function pull() {
   git pull --rebase origin `branch_name`
-}
-
-function spull() {
-  git pull --rebase spree `branch_name`
 }
 
 function rb() {
@@ -50,31 +42,7 @@ function pt() {
   `git push origin ${*:1}`
 }
 
-function spt() {
-  `git push spree ${*:1}`
-}
-
-function sco() {
-  wd=`pwd`
-  for project in spree spree_gateway spree_auth_devise spree_social spree_paypal_express spree_i18n spree_fancy spree-multi-domain; do
-  echo "Checking out ${project}"
-  cd ~/Projects/gems/${project}
-  git checkout $1 -q
-  done
-  cd $wd
-}
-
-function mt() {
-  sha=`git rev-parse HEAD`
-  for branch in ${*:1}; do
-    git checkout $branch
-    git cherry-pick $sha
-  done
-}
-
 alias pap='pull && push'
-alias spap='spull && spush'
-alias m='hub am -3 $1'
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
