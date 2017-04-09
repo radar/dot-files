@@ -83,9 +83,33 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export EDITOR='subl'
+export GIT_EDITOR='subl -w'
+
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
+export CATALINA_HOME=/usr/local/opt/tomcat7/libexec
 
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+. ~/.ryan-aliases
+
+# To stop zeus sometimes crashing with exit status 2
+zeus () { ARGS=$@; command zeus "$@"; ZE_EC=$?; stty sane; if [ $ZE_EC = 2 ]; then zeus "$ARGS"; fi }
+
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# Key for CA AWS jumpbox
+ssh-add ~/.ssh/staging-keypair-usw2-cultureamp-20160802.pem
+
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+kiex use 1.3.3
+
+source ~/.cultureamp
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+. ~/.secrets
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -2,9 +2,9 @@
 
 alias gl='git pull --rebase'
 alias glo='git log $1 --oneline | tail'
-alias gap='git add -p .'
-alias gcp='git checkout -p .'
-alias gsp='git stash -p .'
+alias gap='git add -p'
+alias gcp='git checkout -p'
+alias gsp='git stash -p'
 alias gc='git commit -v'
 alias gco='git checkout'
 alias grh='git reset HEAD'
@@ -40,6 +40,14 @@ function rb() {
 
 function pt() {
   `git push origin ${*:1}`
+}
+
+fbr() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+    branch=$(echo "$branches" |
+  fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 alias pap='pull && push'

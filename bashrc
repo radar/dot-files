@@ -31,6 +31,9 @@ alias berrim='r railties:install:migrations; r db:migrate'
 
 alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
 
+# elixir stuff
+alias mdg='mix deps.get'
+
 # readline settings
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
@@ -46,3 +49,5 @@ alias h='history|g'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
