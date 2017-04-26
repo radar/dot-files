@@ -35,7 +35,7 @@ function pull() {
 }
 
 function rb() {
-  git rebase -i HEAD~$1
+  git rebase -i HEAD~$1 -p
 }
 
 function pt() {
