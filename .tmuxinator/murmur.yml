@@ -1,0 +1,34 @@
+# ~/.tmuxinator/murmur.yml
+
+name: murmur
+root: ~/code/cultureamp
+
+windows:
+  - murmur:
+      root: ~/code/cultureamp/murmur
+      panes:
+        - rails:
+          - foreman start web
+        - javascript:
+          - foreman start client
+  - murmur_event_api:
+      root: ~/code/cultureamp/murmur_event_api
+      panes:
+        - bundle exec rails s -p 3001
+  - waffle_event_importer:
+      root: ~/code/cultureamp/waffle_event_importer
+      panes:
+        - mix deps.get && mix run --no-halt
+  - waffle:
+      root: ~/code/cultureamp/waffle
+      panes:
+        - mix deps.get && mix phoenix.server
+  - rumour_mill:
+      root: ~/code/cultureamp/rumour_mill
+      panes:
+        - mix deps.get && mix run --no-halt
+  - rumour:
+      root: ~/code/cultureamp/rumour
+      panes:
+        - mix deps.get && mix phoenix.server
+
