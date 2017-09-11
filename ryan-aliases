@@ -19,6 +19,7 @@ alias bec="bundle exec cucumber"
 alias be="bundle exec"
 alias berrim='r railties:install:migrations; r db:migrate'
 alias dev='tail -f log/development.log'
+alias cop='rubocop `git diff --name-only master..HEAD --diff-filter=d | ack .rb$`'
 
 alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
 
@@ -27,6 +28,8 @@ alias zc="zeus console"
 
 # Kill all zeus processes
 alias zk="ps x -o pid,command | grep zeus | grep -v grep |  cut -d ' ' -f 1 | xargs kill"
+# Kill all puma processes running on 3001 (MEA)
+alias killmea="lsof -n -i4TCP:3001 | grep LISTEN | cut -d ' ' -f 5 | xargs kill"
 
 alias gomongo="mongod --dbpath ~/.mongo/database --fork --logpath ~/.mongo/log/mongod.log"
 

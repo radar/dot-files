@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git z git-prompt zsh-completions)
 
 # User configuration
 
@@ -99,11 +99,7 @@ zeus () { ARGS=$@; command zeus "$@"; ZE_EC=$?; stty sane; if [ $ZE_EC = 2 ]; th
 
 export PATH="$HOME/.yarn/bin:$PATH"
 
-# Key for CA AWS jumpbox
-ssh-add ~/.ssh/staging-keypair-usw2-cultureamp-20160802.pem
-
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-kiex use 1.3.3
 
 source ~/.cultureamp
 
@@ -113,3 +109,5 @@ source ~/.cultureamp
 . ~/.secrets
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export DISABLE_AUTO_TITLE=true # disable autotitle in tmux
