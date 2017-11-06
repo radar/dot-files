@@ -29,13 +29,16 @@ task :install do
       link_file(file)
     end
   end
+
+  FileUtils.mkdir_p("~/.config/nvim")
+  system %Q{ln -s "$PWD/nvim-init.vim" "$HOME/.config/nvim/init.vim"}
 end
- 
+
 def replace_file(file)
   system %Q{rm "$HOME/.#{file}"}
   link_file(file)
 end
- 
+
 def link_file(file)
   puts "linking ~/.#{file}"
   system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
