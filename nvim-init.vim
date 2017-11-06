@@ -50,11 +50,12 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-" Maps
-
 let mapleader="\<SPACE>"
+
+" launch fzf finder
 map <Leader>t :Files<CR>
-map <Leader>b :Buffers<CR>
+
+" remove trailing whitespace in entire doc
 map <Leader>w :FixWhitespace<CR>
 
 nmap <silent> <leader>r :TestNearest<CR>
@@ -63,6 +64,14 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
+" clear search highlight
+nmap \q :nohlsearch<CR>
+nmap ; :Buffers<CR>
+
+" reflow an entire paragraph
+nnoremap Q gqap
+
+" jump to beginning of line in prompt
 cnoremap <C-a>  <Home>
 
 set incsearch
@@ -70,8 +79,3 @@ set ignorecase
 set smartcase
 set hlsearch
 
-nmap \q :nohlsearch<CR>
-nmap ; :Buffers<CR>
-
-" reflow an entire paragraph
-nnoremap Q gqap
