@@ -38,6 +38,7 @@ set linebreak
 set termguicolors
 set background=dark
 colorscheme ayu
+highlight LineNr guifg=#9a9a9a
 
 
 function! s:fzf_statusline()
