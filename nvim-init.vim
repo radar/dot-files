@@ -50,11 +50,17 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+let g:fzf_tags_command = 'ctags -R'
+
 
 let mapleader="\<SPACE>"
 
 " launch fzf finder
-map <Leader>t :Files<CR>
+map <Leader>f :Files<CR>
+map <Leader>t :BTags<CR>
+map <Leader>y :Tags<CR>
+map <Leader>b :Buffers<CR>
+
 
 " remove trailing whitespace in entire doc
 map <Leader>w :FixWhitespace<CR>
