@@ -4,8 +4,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
-Plug 'tpope/vim-fugitive'
 
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'danro/rename.vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -18,10 +20,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mileszs/ack.vim'
 Plug 'alvan/vim-closetag'
 Plug 'janko-m/vim-test'
+Plug 'mxw/vim-jsx'
 
 Plug 'thoughtbot/vim-rspec'
 
 Plug 'ayu-theme/ayu-vim'
+
+Plug 'junegunn/vim-slash'
+
+Plug 'vim-ruby/vim-ruby'
+
 call plug#end()
 
 "Settings
@@ -50,14 +58,21 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+let g:fzf_tags_command = 'ctags -R'
+
 
 let mapleader="\<SPACE>"
 
 " launch fzf finder
-map <Leader>t :Files<CR>
+map <Leader>f :Files<CR>
+map <Leader>F :Ag<CR>
+map <Leader>t :BTags<CR>
+map <Leader>y :Tags<CR>
+map <Leader>b :Buffers<CR>
 
 " remove trailing whitespace in entire doc
 map <Leader>w :FixWhitespace<CR>
+map <Leader>m gqap
 
 nmap <silent> <leader>r :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
@@ -80,3 +95,7 @@ set ignorecase
 set smartcase
 set hlsearch
 
+" markdown files to auto-wrap at 80 characters
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+:let ruby_fold = 1
