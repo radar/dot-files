@@ -57,7 +57,7 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-let g:fzf_tags_command = 'ctags -R'
+let g:fzf_tags_command = 'ctags -R --exclude=node_modules --exclude=.git'
 
 
 let mapleader="\<SPACE>"
