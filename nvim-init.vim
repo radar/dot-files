@@ -32,6 +32,12 @@ Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
+"Colours
+colorscheme ayu
+set termguicolors
+set background=dark
+highlight LineNr guifg=#9a9a9a
+
 "Settings
 
 set relativenumber
@@ -41,13 +47,6 @@ set tabstop=2
 set shiftwidth=2
 set wrap
 set linebreak
-
-" Colours
-set termguicolors
-set background=dark
-colorscheme ayu
-highlight LineNr guifg=#9a9a9a
-
 
 function! s:fzf_statusline()
   " Override statusline as you like
