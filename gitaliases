@@ -1,10 +1,8 @@
 # Dr Nic Compatibility Mode
 
 alias gl='git pull --rebase --autostash'
-alias glo='git log $1 --oneline | tail'
 alias gap='git add -p'
 alias gcp='git checkout -p'
-alias gsp='git stash -p'
 alias gc='git commit -v'
 alias gco='git checkout'
 alias grh='git reset HEAD'
