@@ -13,9 +13,6 @@
   diff = auto
   status = auto
   ui = auto
-[github]
-	user = radar
-	token = ba7bf2d7f0edc07373873dda887b18ae
 [core]
   editor = subl
   excludesfile = ~/.gitignore
