@@ -45,7 +45,7 @@ fbr() {
     git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-alias pap='pull && push'
+alias pap='gl && push'
 
 alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
 
