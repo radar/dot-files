@@ -36,3 +36,6 @@ alias gomongo="mongod --dbpath ~/.mongo/database --fork --logpath ~/.mongo/log/m
 # elixir things
 alias mdg='mix deps.get'
 alias mt="mix test"
+
+# hanami things
+alias h="be hanami"

@@ -5,7 +5,9 @@ Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND = 'ag -l --ignore node_modules -g ""'
 
 
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
 Plug 'danro/rename.vim'
 Plug 'bling/vim-airline'
@@ -21,24 +23,22 @@ Plug 'mileszs/ack.vim'
 Plug 'alvan/vim-closetag'
 Plug 'janko-m/vim-test'
 Plug 'mxw/vim-jsx'
-
+Plug 'flowtype/vim-flow'
 Plug 'thoughtbot/vim-rspec'
 
 Plug 'ayu-theme/ayu-vim'
-
 Plug 'junegunn/vim-slash'
-
-Plug 'vim-ruby/vim-ruby'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
+let g:rainbow_active = 1
+
 "Colours
-colorscheme ayu
+colorscheme dracula
 set termguicolors
 set background=dark
 highlight LineNr guifg=#9a9a9a
-
-"Settings
 
 set relativenumber
 set showmatch
@@ -47,6 +47,8 @@ set tabstop=2
 set shiftwidth=2
 set wrap
 set linebreak
+" makes yank actions copy to the system clipboard
+set clipboard=unnamedplus
 
 function! s:fzf_statusline()
   " Override statusline as you like
@@ -57,7 +59,7 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-let g:fzf_tags_command = 'ctags -R --exclude=node_modules --exclude=.git'
+let g:fzf_tags_command = 'ctags -R'
 
 
 let mapleader="\<SPACE>"
@@ -78,6 +80,7 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>c :!mkdir -p %:h<CR>:w
 
 " clear search highlight
 nmap \q :nohlsearch<CR>
@@ -97,4 +100,4 @@ set hlsearch
 " markdown files to auto-wrap at 80 characters
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
-:let ruby_fold = 1
+set mouse=nicr
