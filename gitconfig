@@ -6,6 +6,8 @@
 	tool = opendiff
 [alias]
 	sp = stash pop
+[commit]
+	verbose = true
 [apply]
   whitespace = nowarn
 [color]
@@ -14,7 +16,7 @@
   status = auto
   ui = auto
 [core]
-  editor = subl
+  editor = code
   excludesfile = ~/.gitignore
 	whitespace = fix
 [help]

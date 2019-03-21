@@ -28,10 +28,6 @@ alias zc="zeus console"
 
 # Kill all zeus processes
 alias zk="ps x -o pid,command | grep zeus | grep -v grep |  cut -d ' ' -f 1 | xargs kill"
-# Kill all puma processes running on 3001 (MEA)
-alias killmea="lsof -n -i4TCP:3001 | grep LISTEN | cut -d ' ' -f 5 | xargs kill"
-
-alias gomongo="mongod --dbpath ~/.mongo/database --fork --logpath ~/.mongo/log/mongod.log"
 
 # elixir things
 alias mdg='mix deps.get'
