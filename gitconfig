@@ -6,6 +6,12 @@
 	tool = opendiff
 [alias]
 	sp = stash pop
+        pf = push --force-with-lease
+	current-branch = "!git rev-parse --abbrev-ref HEAD"
+	changed-files = "!git diff --name-only $(git current-branch) $(git merge-base $(git current-branch) master)"
+	rspec = "!git changed-files *_spec.rb | xargs -t -- rspec"
+        rubocop = "!git changed-files *.rb | xargs -t -- rubocop"
+	set-upstream = "!git branch --set-upstream-to=origin/$(git current-branch) $(git current-branch)"
 [commit]
 	verbose = true
 [apply]
@@ -19,6 +25,7 @@
   editor = code
   excludesfile = ~/.gitignore
 	whitespace = fix
+	editor = code -w
 [help]
 	autocorrect = 1
 [push]
@@ -28,3 +35,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = true

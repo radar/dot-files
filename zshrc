@@ -11,20 +11,14 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export EDITOR='nvim'
-export GIT_EDITOR='nvim '
-
-
-USER_BASE_PATH=$(python -m site --user-base)
+export EDITOR='code'
+export GIT_EDITOR='$EDITOR --wait'
 
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH=$PATH:$USER_BASE_PATH/bin
 
-source ~/.cultureamp
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. ~/.just/aliases
 . ~/.ryan-aliases
 
 . ~/.gitaliases
@@ -32,7 +26,8 @@ source ~/.cultureamp
 export DISABLE_AUTO_TITLE=true # disable autotitle in tmux
 
 . /usr/local/etc/profile.d/z.sh
-source /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/asdf.sh
 
 export GOPATH=~/code/go
 export DISABLE_SPRING=1
+export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"

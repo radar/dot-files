@@ -1,5 +1,6 @@
 # Dr Nic Compatibility Mode
 
+alias g='git'
 alias gl='git pull --rebase --autostash'
 alias gap='git add -p'
 alias gcp='git checkout -p'
@@ -11,22 +12,23 @@ alias grs='git rebase --skip'
 alias gra='git rebase --abort'
 alias sha='git rev-parse HEAD | tr -d '\n' | pbcopy'
 alias cherry='git cherry-pick $1'
+alias gcane='git commit --amend --no-edit'
 
 alias good='git bisect good'
 alias bad='git bisect bad'
 
-function branch_name() {
-  branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
-  branch_name=${branch_name##refs/heads/}
-  echo $branch_name
+function gr() {
+  local branch="${1:-master}"
+  git rebase $branch
 }
 
+
 function push() {
-  git push origin `branch_name`
+  git push origin `git current-branch`
 }
 
 function pull() {
-  git pull --rebase origin `branch_name`
+  git pull --rebase origin `git current-branch`
 }
 
 function rb() {

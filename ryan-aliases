@@ -1,3 +1,4 @@
+alias e='$EDITOR'
 alias ls='ls -G'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
@@ -35,3 +36,4 @@ alias mt="mix test"
 
 # hanami things
 alias h="be hanami"
+

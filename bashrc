@@ -51,3 +51,9 @@ alias h='history|g'
 export PATH="/usr/local/heroku/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# installed by cultureamp/big-frontend-repo
+bfr() {
+  ${HOME}/code/cultureamp/big-frontend-repo/tools/cli/run.sh $@
+}
+
