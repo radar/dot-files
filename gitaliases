@@ -6,6 +6,8 @@ alias gap='git add -p'
 alias gcp='git checkout -p'
 alias gc='git commit -v'
 alias gco='git checkout'
+alias gcod='gco develop'
+alias gcom='gco master'
 alias grh='git reset HEAD'
 alias grc='git rebase --continue'
 alias grs='git rebase --skip'
@@ -13,6 +15,8 @@ alias gra='git rebase --abort'
 alias sha='git rev-parse HEAD | tr -d '\n' | pbcopy'
 alias cherry='git cherry-pick $1'
 alias gcane='git commit --amend --no-edit'
+alias gmd='git merge develop --no-edit'
+alias gmm='git merge master --no-edit'
 
 alias good='git bisect good'
 alias bad='git bisect bad'
@@ -32,7 +36,7 @@ function pull() {
 }
 
 function rb() {
-  git rebase -i HEAD~$1 -p --autostash
+  git rebase -i HEAD~$1 --rebase-merges --autostash
 }
 
 function pt() {

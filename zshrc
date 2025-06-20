@@ -25,9 +25,14 @@ export PATH=$PATH:$USER_BASE_PATH/bin
 
 export DISABLE_AUTO_TITLE=true # disable autotitle in tmux
 
-. /usr/local/etc/profile.d/z.sh
-. /usr/local/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+. /opt/homebrew/etc/profile.d/z.sh
+
 
 export GOPATH=~/code/go
 export DISABLE_SPRING=1
-export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
+eval $(/opt/homebrew/bin/brew shellenv)
+
+. ~/.fatzebra
+
+export PS1=%{%f%b%k%}$(prompt_agnoster_main)

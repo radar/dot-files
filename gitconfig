@@ -30,6 +30,7 @@
 	autocorrect = 1
 [push]
   default = current
+	autoSetupRemote = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -37,3 +38,26 @@
 	required = true
 [pull]
 	rebase = true
+[init]
+	defaultBranch = develop
+[rerere]
+	enabled = true
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
+[includeIf "gitdir:~/code/fz/"]
+    path = ~/code/fz/.gitconfig
+
+[column]
+    ui = auto
+
+[tag]
+        sort = version:refname
+[diff]
+	mnemonicPrefix = true
+	colorMoved = plain
+
+[fetch]
+        prune = true
+        pruneTags = true

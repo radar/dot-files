@@ -6,7 +6,7 @@ alias ...='.. ..'
 # rails stuff
 alias log='tail -f -0 ./log/*.log &'
 alias r='bundle exec rake'
-alias migrate='r db:migrate'
+#alias migrate='r db:migrate'
 alias rollback='r db:rollback'
 alias redo="r db:migrate && r db:rollback"
 alias restart='touch tmp/restart.txt'
@@ -18,22 +18,146 @@ alias c='ta && rails s'
 alias ber="bundle exec rspec"
 alias bec="bundle exec cucumber"
 alias be="bundle exec"
-alias berrim='r railties:install:migrations; r db:migrate'
 alias dev='tail -f log/development.log'
-alias cop='rubocop `git diff --name-only master..HEAD --diff-filter=d | ack .rb$`'
+alias rc='bundle exec rubocop'
+alias rca='bundle exec rubocop -A'
+alias dm="osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode'"
+alias bac="bundle audit check --update"
 
-alias logs="cd /Users/ryan/Library/Containers/com.codeux.irc.textual/Data/Logs/Twist"
+stop() {
+  echo stopping services on port $1
+  lsof -i tcp:$1 | tail -n +2 |  awk '{print $2}' | xargs kill
+}
 
-alias zt="zeus test"
-alias zc="zeus console"
+already_migrated() {
+  rails runner "/Users/ryan.bigg/dot-files/already_migrated.rb"
+}
+alias am=already_migrated
+alias puish=push
 
-# Kill all zeus processes
-alias zk="ps x -o pid,command | grep zeus | grep -v grep |  cut -d ' ' -f 1 | xargs kill"
+dr() {
+  docker run -it $1 /bin/sh
+}
 
-# elixir things
-alias mdg='mix deps.get'
-alias mt="mix test"
+drr() {
+  docker run -it --user=root $1 /bin/sh
+}
 
-# hanami things
-alias h="be hanami"
+rup() {
+  # Get the current folder name
+  local current_folder=$(basename "$PWD")
 
+  # Define the path to the Puma Dev folder
+  local puma_dev_dir="$HOME/.puma-dev"
+
+  # Check if the ~/.puma_dev directory exists
+  if [[ ! -d "$puma_dev_dir" ]]; then
+    echo "Error: The ~/.puma_dev directory does not exist."
+    return 1
+  fi
+
+  # Check if the file exists in the Puma Dev folder
+  local file_path="$puma_dev_dir/$current_folder"
+  if [[ -f "$file_path" ]]; then
+    # Read the port number from the file
+    local port_number=$(<"$file_path")
+
+    # Check if the port number is valid
+    if [[ ! "$port_number" =~ ^[0-9]+$ ]]; then
+      echo "Error: Invalid port number in $file_path. Please ensure it contains a valid port."
+      return 1
+    fi
+
+    # Execute the Rack server command with the port number
+    echo "Starting app '$current_folder' on port $port_number using puma"
+    bundle exec puma -p "$port_number"
+  else
+    echo "Error: No configuration file found for '$current_folder' in $puma_dev_dir"
+    return 1
+  fi
+}
+
+ecr_login() {
+  local repo=""
+
+  case "$1" in
+    build)
+      repo="522814734505.dkr.ecr.ap-southeast-2.amazonaws.com"
+      ;;
+    devtest)
+      repo="748746525051.dkr.ecr.ap-southeast-2.amazonaws.com"
+      ;;
+    *)
+      echo "Usage: ecr_login {build|devtest}"
+      return 1
+      ;;
+  esac
+
+  aws --profile test ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin "$repo"
+}
+
+reqs() {
+  req_id=$(tail -n 1000 log/development.log |
+    awk -F'[][]' '{print $2, "|", $4}' | sort -u -r | fzf | awk '{print $NF}')
+
+  reqlogs "$req_id"
+}
+
+
+reqlogs() {
+    awk -v req_id="$1" '
+    # Start capturing when we see the request start
+    $0 ~ "Request ID: " req_id " started" {
+        active = 1
+        logs = $0
+        next
+    }
+
+    # Keep capturing lines while active
+    active == 1 {
+        logs = logs "\n" $0
+    }
+
+    # Stop when we see the end line
+    $0 ~ "Request ID: " req_id " .*ended:" {
+        active = 0
+        print logs
+        exit
+    }
+    ' ~/code/fz/gateway/log/development.log
+}
+
+up() {
+ #!/bin/bash
+
+green='\033[0;32m'
+red='\033[0;31m'
+reset='\033[0m'
+
+PUMA_DEV_DIR="$HOME/.puma-dev"
+
+if [ ! -d "$PUMA_DEV_DIR" ]; then
+  echo "Puma-dev directory not found at $PUMA_DEV_DIR"
+  exit 1
+fi
+
+for file in "$PUMA_DEV_DIR"/*; do
+  [ -f "$file" ] || continue
+  service_name="$(basename "$file")"
+  port=$(cat "$file" | grep -oE '[0-9]+')
+''
+  if [ -z "$port" ]; then
+    echo -e "$service_name ($port): ${red}DOWN${reset} (No port found)"
+    continue
+  fi
+
+  if nc -z localhost "$port"; then
+    echo -e "$service_name ($port): ${green}UP${reset}"
+  else
+    echo -e "$service_name ($port): ${red}DOWN${reset}"
+  fi
+
+done
+}
+
+alias sp="ber spec/requests/secure_pay spec/controllers/secure_pay spec/lib/secure_pay"
