@@ -12,11 +12,11 @@ alias redo="r db:migrate && r db:rollback"
 alias restart='touch tmp/restart.txt'
 alias raisl='rails'
 
+alias s='server'
 alias b='bundle'
-alias s='ta && rails s'
-alias c='ta && rails s'
+alias c='console'
+alias s='bundle exec rails server'
 alias ber="bundle exec rspec"
-alias bec="bundle exec cucumber"
 alias be="bundle exec"
 alias dev='tail -f log/development.log'
 alias rc='bundle exec rubocop'
@@ -43,9 +43,39 @@ drr() {
   docker run -it --user=root $1 /bin/sh
 }
 
+typeset -A app_colors
+app_colors=(
+  gateway "BF0000" # red
+  dashboard2 "59FFA0" # green
+  jabberwocky "F2A541" # orange
+  billing "37A54C" # green
+  crm "3357FF" # blue
+  paynow "7B287D" # purple
+  reseller "AF1B3F" # dark red
+
+
+
+)
+
+console() {
+  # Get the current folder name
+  local current_folder=$(basename "$PWD")
+  local app_color=$app_colors[$current_folder]
+
+  printf "\e]1337;SetColors=tab=$app_color\a"
+  printf "\e]0;%s\a" "$current_folder (Console)"
+
+  # Start the Rails console
+  bundle exec rails console
+}
+
+
 rup() {
   # Get the current folder name
   local current_folder=$(basename "$PWD")
+  local app_color=$app_colors[$current_folder]
+  printf "\e]1337;SetColors=tab=$app_color\a"
+  printf "\e]0;%s\a" "$current_folder (Server)"
 
   # Define the path to the Puma Dev folder
   local puma_dev_dir="$HOME/.puma-dev"
